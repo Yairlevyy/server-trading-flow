@@ -2,3 +2,4 @@ Django==4.2.4
 djangorestframework
 gunicorn
 psycopg2
+pandas
