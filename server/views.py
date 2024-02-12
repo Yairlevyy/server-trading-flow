@@ -14,10 +14,10 @@ def health_check(request):
 
 def get_data(ticker):
     actual_date = datetime.now().date() 
-    two_weeks_ago = actual_date - timedelta(days=14)
+    month_ago = actual_date - timedelta(days=30)
     formatted_actual_date = actual_date.strftime('%Y-%m-%d')
-    formatted_two_weeks_ago = two_weeks_ago.strftime('%Y-%m-%d')
-    url = f"https://api.polygon.io/v2/aggs/ticker/{ticker}/range/1/day/{formatted_two_weeks_ago}/{formatted_actual_date}?adjusted=true&sort=asc&limit=120&apiKey=ivZzORZgwRUh111oi0qOsGj4pKbiSoYG"
+    formatted_month_ago = month_ago.strftime('%Y-%m-%d')
+    url = f"https://api.polygon.io/v2/aggs/ticker/{ticker}/range/1/day/{formatted_month_ago}/{formatted_actual_date}?adjusted=true&sort=asc&limit=120&apiKey=ivZzORZgwRUh111oi0qOsGj4pKbiSoYG"
     response = requests.get(url)
     data = response.json()
     return pd.DataFrame(data["results"])
