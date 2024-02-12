@@ -5,9 +5,9 @@ import pandas as pd
 import requests
 import json
 import os
-from dotenv import load_dotenv
-load_dotenv()
-API_KEY = os.getenv('API_KEY')
+# from dotenv import load_dotenv
+# load_dotenv()
+# API_KEY = os.getenv('API_KEY')
 
 def health_check(request):
     return JsonResponse({"status": "healthy"})
@@ -17,7 +17,7 @@ def get_data(ticker):
     two_weeks_ago = actual_date - timedelta(days=14)
     formatted_actual_date = actual_date.strftime('%Y-%m-%d')
     formatted_two_weeks_ago = two_weeks_ago.strftime('%Y-%m-%d')
-    url = f"https://api.polygon.io/v2/aggs/ticker/{ticker}/range/1/day/{formatted_two_weeks_ago}/{formatted_actual_date}?adjusted=true&sort=asc&limit=120&apiKey={API_KEY}"
+    url = f"https://api.polygon.io/v2/aggs/ticker/{ticker}/range/1/day/{formatted_two_weeks_ago}/{formatted_actual_date}?adjusted=true&sort=asc&limit=120&apiKey=ivZzORZgwRUh111oi0qOsGj4pKbiSoYG"
     response = requests.get(url)
     data = response.json()
     return pd.DataFrame(data["results"])

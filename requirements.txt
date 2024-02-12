@@ -4,4 +4,3 @@ gunicorn
 psycopg2
 pandas
 requests
-dotenv
